@@ -10,16 +10,17 @@ transforms:
     condition: '.CONTAINER_NAME != "vector_logging"'
 
 sinks:
-  # new_relic_logs:
-    # type: "new_relic_logs"
-    # inputs: ["filter_vector_logs"] # Ensure this is connected to the transform
-    # license_key: "${NEW_RELIC_LICENSE_KEY}"
-    # region: "US" # Adjust if you're using the EU region
-
-  console:
-    type: "console"
-    # inputs: ["journald"] # Ensure this is connected to the transform
-    inputs: ["exclude_vector_logs"] # Ensure this is connected to the transform
-    target: "stdout"
-    encoding:
-      codec: "json"
+  new_relic:
+    type: "new_relic"
+    inputs: ["exclude_vector_logs"]
+    account_id: "${NEW_RELIC_ACCOUNT_ID}" # Use the environment variable
+    license_key: "${NEW_RELIC_LICENSE_KEY}"
+    api: "logs"
+    region: "eu"
+  # console:
+    # type: "console"
+    # # inputs: ["journald"] # Ensure this is connected to the transform
+    # inputs: ["exclude_vector_logs"] # Ensure this is connected to the transform
+    # target: "stdout"
+    # encoding:
+      # codec: "json"
