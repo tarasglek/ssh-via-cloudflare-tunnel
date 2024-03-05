@@ -1,0 +1,25 @@
+sources:
+  journald:
+    type: journald
+    journal_directory: "/var/log/journal"
+
+transforms:
+  exclude_vector_logs:
+    type: "filter"
+    inputs: ["journald"]
+    condition: '.CONTAINER_NAME != "vector_logging"'
+
+sinks:
+  # new_relic_logs:
+    # type: "new_relic_logs"
+    # inputs: ["filter_vector_logs"] # Ensure this is connected to the transform
+    # license_key: "${NEW_RELIC_LICENSE_KEY}"
+    # region: "US" # Adjust if you're using the EU region
+
+  console:
+    type: "console"
+    # inputs: ["journald"] # Ensure this is connected to the transform
+    inputs: ["exclude_vector_logs"] # Ensure this is connected to the transform
+    target: "stdout"
+    encoding:
+      codec: "json"
