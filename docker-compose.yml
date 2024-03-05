@@ -1,17 +1,5 @@
 version: '3.8'
 services:
-  vector:
-    image: timberio/vector:0.36.0-debian
-    container_name: vector_logging
-    volumes:
-      - /var/log/journal:/var/log/journal:ro
-      - ./vector.yaml:/etc/vector/vector.yaml:ro
-    environment:
-      - VECTOR_LOG=info
-      - NEW_RELIC_LICENSE_KEY=${NEW_RELIC_LICENSE_KEY}
-    network_mode: "host"
-    restart: always
-
   websocat:
     build:
       context: ./websocat
