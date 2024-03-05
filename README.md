@@ -1,2 +1,1 @@
-Put env vars used in .env
-websocat -E --binary wss://minds-stores-fight-despite.trycloudflare.com/ tcp-l:127.0.0.1:2222 -v
+websocat -E --binary tcp-l:127.0.0.1:2222 -v  wss://require-feof-pipe-coordination.trycloudflare.com 
