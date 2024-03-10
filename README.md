@@ -1,3 +1,5 @@
+# 0-effort way to temporarily expose ssh over cloudflare
+
 ```
 docker compose up
 ```
