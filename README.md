@@ -1,3 +1,7 @@
+```
+docker compose up
+```
+
 Given a log message from cloudflare like:
 ```
 2024-03-08 12:21:36.757	
