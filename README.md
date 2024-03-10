@@ -1,12 +1,12 @@
 # 0-effort way to temporarily expose ssh over cloudflare
 
-Explanation: https://taras.glek.net/post/cloudflare-ssh/
+## Howto
 
 ```
 docker compose up
 ```
 
-Given a log message from cloudflare like:
+Given a log message from cloudflared like:
 ```
 2024-03-08 12:21:36.757	
 2024-03-08T10:21:36Z INF +--------------------------------------------------------------------------------------------+
@@ -23,6 +23,10 @@ You can now login via:
 ```
 ssh -o ProxyCommand="websocat -E --binary - -v ws://%h" -o ServerAliveInterval=10 library-won-nt-gauge.trycloudflare.com
 ```
+
+## Explanation
+
+Blog post: https://taras.glek.net/post/cloudflare-ssh/
 
 # Architecture
 
